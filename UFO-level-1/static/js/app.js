@@ -14,11 +14,15 @@ let DateInput = "1/8/2010"
 let tbody = d3.select("tbody")
 
 // Button to click to refresh the data
-var button = d3.select("#click-me");
+var button = d3.select("#filter-btn");
 
 //  Input tha will be used to get the user date input
+var inputField = d3.select("#datetime");
 
-var inputField = d3.select("#input-field");
+
+
+inputField.on("change", )
+
 //Arrow function to iterate over the selected data
 tableData.forEach(obs => {
 
