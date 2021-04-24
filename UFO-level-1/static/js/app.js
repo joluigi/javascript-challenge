@@ -8,7 +8,7 @@ let tableData = data;
 
 // 1. Creating the functions that will populate the table
 
-let DateInput = "1/8/2010"
+// let DateInput = "1/8/2010"
 
 // D3 object that will be updating the table
 let tbody = d3.select("tbody")
@@ -19,30 +19,35 @@ var button = d3.select("#filter-btn");
 //  Input tha will be used to get the user date input
 var inputField = d3.select("#datetime");
 
+button.on("click", DataFilter);
+let DateInput = inputField.on("submit", DataFilter);
 
+function DataFilter(){
+    //d3.event.preventDefault();
+    var inputField = d3.select("#datetime");
+    let dataDate = inputField.property("value");
 
-inputField.on("change", )
 
 //Arrow function to iterate over the selected data
 tableData.forEach(obs => {
 
-    console.log(obs);
-    console.log("-----New obj----" )
-    let row = tbody.append("tr");
-    console.log(obs.datetime)
+        //console.log(obs);
+        //console.log("-----New obj----" );
+        let row = tbody.append("tr");
+        console.log(obs.dataDate);
 
-    // Conditional to check against user input
-    if (obs.datetime === DateInput){
+        // Conditional to check against user input
+        if (obs.datetime === dataDate){
 
-    // Only data within the user input will be used
+        // Only data within the user input will be used
 
-        console.log("Date Found")
-        Object.entries(obs).forEach(([key, value]) =>{
-            // console.log(`key: ${key}, value:${value}`);
-            var cell = row.append("td")
-            cell.text(value)
-        });
-     }  
-    
-});
-
+            console.log("Date Found");
+            Object.entries(obs).forEach(([key, value]) =>{
+                // console.log(`key: ${key}, value:${value}`);
+                var cell = row.append("td");
+                cell.text(value);
+            });
+        }  
+        
+    });
+}
